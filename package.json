@@ -38,5 +38,5 @@
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
   },
-  "homepage": "https://timkindberg.github.io/blackjack-react-redux/build"
+  "homepage": "https://timkindberg.github.io/blackjack-react-redux"
 }
