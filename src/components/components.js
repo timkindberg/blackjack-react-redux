@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import * as actions from '../actions';
 import { statuses } from '../reducers/game';
 import './components.css';
 
@@ -30,22 +28,20 @@ export const BlackjackGame = ({
     status
 }) =>
   <div>
-    <button onClick={ deal }>Deal</button>
+    <button onClick={ ____ }>Deal</button>
     <hr />
     { drawPile && drawPile.length === 0 &&
       [<div>Deck is empty, refresh for a new game.</div>, <hr />] }
-    <Hand label="Dealer: " cards={ dealerHand } />
-    <div>Dealer Score: { status === statuses.PLAYING ? '?' : dealerScore }</div>
+    <Hand label="Dealer: " cards={ ____ } />
+    <div>Dealer Score: { status === statuses.PLAYING? '?' : _____ }</div>
     <hr />
-    <Hand label="Your Hand: " cards={ playerHand } />
-    <div>Your Score: { playerScore }</div>
+    <Hand label="Your Hand: " cards={ ____ } />
+    <div>Your Score: { _____ }</div>
     <hr />
-    <button onClick={ () => hit('player') }>Hit</button>
-    <button onClick={ stand }>Stand</button>
+    <button onClick={ _____ }>Hit</button>
+    <button onClick={ _____ }>Stand</button>
     <hr />
     <div style={{ fontWeight: 'bold' }}>{ status }</div>
   </div>;
 
-const mapStateToProps = (state) => state;
-
-export default connect(mapStateToProps, actions)(BlackjackGame);
+export default BlackjackGame;
