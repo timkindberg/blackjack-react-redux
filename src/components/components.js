@@ -13,7 +13,7 @@ export const Hand = ({ label, cards }) =>
   <div>
     <label>{ label }</label>
     { cards.map((card, i) =>
-      <Card face={ card.face } faceDown={ card.faceDown } key={ i } />
+      <Card face={ card.face } faceDown={ card.faceDown } color={ card.color } key={ i } />
     )}
   </div>;
 

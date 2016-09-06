@@ -17,9 +17,6 @@ export const newGameState = () => ({
 
 const reducer = (state = newGameState(), action) => {
   switch (action.type) {
-    case 'NEW_GAME':
-      return newGameState();
-
     case 'DEAL':
       const [playerCard1, dealerCard1, playerCard2, dealerCard2] = state.drawPile;
       dealerCard1.faceDown = true;
@@ -50,7 +47,7 @@ const reducer = (state = newGameState(), action) => {
         playerScore: calculatePlayerScore(state.playerHand)
       };
 
-    case 'FINAL_SCORE':
+    case 'OUTCOME':
       const calculateStatus = () => {
         if (state.playerScore === 21) return statuses.WIN;
         if (state.playerScore > 21) return statuses.LOSE;

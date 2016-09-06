@@ -36,7 +36,7 @@ describe('Actions', () => {
       flatten(capturedArgs).should.eql([
         { type: 'DEAL' },
         { type: 'TALLY' },
-        { type: 'FINAL_SCORE' }
+        { type: 'OUTCOME' }
       ]);
     });
   });
@@ -59,7 +59,7 @@ describe('Actions', () => {
       flatten(capturedArgs).should.eql([
         { type: 'HIT', who: 'player' },
         { type: 'TALLY' },
-        { type: 'FINAL_SCORE' }
+        { type: 'OUTCOME' }
       ]);
     });
 
@@ -71,7 +71,7 @@ describe('Actions', () => {
       flatten(capturedArgs).should.eql([
         { type: 'HIT', who: 'player' },
         { type: 'TALLY' },
-        { type: 'FINAL_SCORE' }
+        { type: 'OUTCOME' }
       ]);
     });
   });
@@ -90,7 +90,7 @@ describe('Actions', () => {
         { type: 'TALLY' },
         { type: 'HIT', who: 'dealer' },
         { type: 'TALLY' },
-        { type: 'FINAL_SCORE' }
+        { type: 'OUTCOME' }
       ]);
     });
   });
