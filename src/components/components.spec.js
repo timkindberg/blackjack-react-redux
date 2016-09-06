@@ -5,7 +5,6 @@ import cards from 'cards';
 import {
   Card,
   Hand,
-  ReplaceWithMessage,
   BlackjackGame
 } from './components';
 import { statuses } from '../reducers/game';
