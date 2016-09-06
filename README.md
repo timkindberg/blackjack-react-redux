@@ -1,18 +1,25 @@
-## Getting Started
+## To do the Workshop!
 
 ```
 git clone https://github.com/timkindberg/blackjack-react-redux.git
+git checkout workshop
 npm i
+npm start
+
+# In a second terminal
+npm run test:watch
 ```
 
-### `npm start`
+Now the super broken game is running at [http://localhost:3000](http://localhost:3000). The page will reload if you make edits.<br>
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+But for the workshop, you'll be trying to fix all the broken tests which have all been written already.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+I recommend fixing the files in this order:
+- actions/index.js
+- reducers/game.js
+- components/components.js
 
-### `npm run test:watch`
-
-Runs all the tests!
+After you are done:
+- Play the game!
+- Try adding more features
+- Try coding your own card game
