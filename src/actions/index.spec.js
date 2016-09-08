@@ -1,5 +1,4 @@
 import * as actions from './index';
-import sinon from 'sinon';
 import flatten from 'flatten';
 
 let getStateStub = () => ({ playerScore: 0 });
@@ -36,7 +35,7 @@ describe('Actions', () => {
       flatten(capturedArgs).should.eql([
         { type: 'DEAL' },
         { type: 'TALLY' },
-        { type: 'FINAL_SCORE' }
+        { type: 'OUTCOME' }
       ]);
     });
   });
@@ -59,7 +58,7 @@ describe('Actions', () => {
       flatten(capturedArgs).should.eql([
         { type: 'HIT', who: 'player' },
         { type: 'TALLY' },
-        { type: 'FINAL_SCORE' }
+        { type: 'OUTCOME' }
       ]);
     });
 
@@ -71,7 +70,7 @@ describe('Actions', () => {
       flatten(capturedArgs).should.eql([
         { type: 'HIT', who: 'player' },
         { type: 'TALLY' },
-        { type: 'FINAL_SCORE' }
+        { type: 'OUTCOME' }
       ]);
     });
   });
@@ -90,7 +89,7 @@ describe('Actions', () => {
         { type: 'TALLY' },
         { type: 'HIT', who: 'dealer' },
         { type: 'TALLY' },
-        { type: 'FINAL_SCORE' }
+        { type: 'OUTCOME' }
       ]);
     });
   });

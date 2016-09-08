@@ -6,23 +6,20 @@ export const statuses = {
   LOSE: 'Lose'
 };
 
-export const newGameState = () => ({
+const initialState = {
   drawPile: newShuffledPokerDeck(),
   dealerHand: [],
   dealerScore: 0,
   playerHand: [],
   playerScore: 0,
   status: statuses.PLAYING
-});
+};
 
-const reducer = (state = newGameState(), action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'NEW_GAME':
-      return newGameState();
-
     case 'DEAL':
-      const [playerCard1, dealerCard1, playerCard2, dealerCard2] = state.drawPile;
-      dealerCard1.faceDown = true;
+      let [playerCard1, dealerCard1, playerCard2, dealerCard2] = state.drawPile;
+      dealerCard1 = { ...dealerCard1, faceDown: true };
 
       return {
         ...state,
@@ -42,7 +39,7 @@ const reducer = (state = newGameState(), action) => {
         drawPile: remainingPile,
         [hitHandKey]: [...hitHand, drawnCard]
       };
-    
+
     case 'TALLY':
       return {
         ...state,
@@ -50,7 +47,7 @@ const reducer = (state = newGameState(), action) => {
         playerScore: calculatePlayerScore(state.playerHand)
       };
 
-    case 'FINAL_SCORE':
+    case 'OUTCOME':
       const calculateStatus = () => {
         if (state.playerScore === 21) return statuses.WIN;
         if (state.playerScore > 21) return statuses.LOSE;
@@ -60,10 +57,12 @@ const reducer = (state = newGameState(), action) => {
         return statuses.PLAYING;
       };
 
+      const turnAllFaceDown =  c => ({ ...c, faceDown: false });
+
       return {
         ...state,
-        status: calculateStatus(),
-        dealerHand: state.dealerHand.map(c => ({ ...c, faceDown: false }))
+        dealerHand: state.dealerHand.map(turnAllFaceDown),
+        status: calculateStatus()
       };
 
     default:
@@ -71,4 +70,4 @@ const reducer = (state = newGameState(), action) => {
   }
 };
 
-export default reducer
+export default reducer;

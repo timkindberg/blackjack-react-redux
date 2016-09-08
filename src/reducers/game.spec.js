@@ -49,7 +49,7 @@ describe('Reducer', () => {
 
       store.getState().drawPile.should.be.empty;
       store.getState().playerHand.should.eql([ace, queen]);
-      store.getState().dealerHand.should.eql([king, jack]);
+      store.getState().dealerHand.should.eql([{ ...king, faceDown: true }, jack]);
     });
 
     it('keeps one of the dealer cards face down', () => {
@@ -153,7 +153,7 @@ describe('Reducer', () => {
     });
   });
 
-  describe('FINAL_SCORE', () => {
+  describe('OUTCOME', () => {
     let sharedState;
 
     beforeEach(() => {
@@ -171,7 +171,7 @@ describe('Reducer', () => {
       };
       store = createStore(reducer, initialState);
 
-      store.dispatch({ type: 'FINAL_SCORE' });
+      store.dispatch({ type: 'OUTCOME' });
 
       store.getState().dealerHand.every(c => !c.faceDown).should.be.true;
     });
@@ -185,7 +185,7 @@ describe('Reducer', () => {
       };
       store = createStore(reducer, initialState);
 
-      store.dispatch({ type: 'FINAL_SCORE' });
+      store.dispatch({ type: 'OUTCOME' });
 
       store.getState().status.should.equal(statuses.WIN);
     });
@@ -199,7 +199,7 @@ describe('Reducer', () => {
       };
       store = createStore(reducer, initialState);
 
-      store.dispatch({ type: 'FINAL_SCORE' });
+      store.dispatch({ type: 'OUTCOME' });
 
       store.getState().status.should.equal(statuses.LOSE);
     });
@@ -213,7 +213,7 @@ describe('Reducer', () => {
       };
       store = createStore(reducer, initialState);
 
-      store.dispatch({ type: 'FINAL_SCORE' });
+      store.dispatch({ type: 'OUTCOME' });
 
       store.getState().status.should.equal(statuses.WIN);
     });
@@ -227,7 +227,7 @@ describe('Reducer', () => {
       };
       store = createStore(reducer, initialState);
 
-      store.dispatch({ type: 'FINAL_SCORE' });
+      store.dispatch({ type: 'OUTCOME' });
 
       store.getState().status.should.equal(statuses.WIN);
     });
@@ -241,7 +241,7 @@ describe('Reducer', () => {
       };
       store = createStore(reducer, initialState);
 
-      store.dispatch({ type: 'FINAL_SCORE' });
+      store.dispatch({ type: 'OUTCOME' });
 
       store.getState().status.should.equal(statuses.LOSE);
     });
@@ -255,7 +255,7 @@ describe('Reducer', () => {
       };
       store = createStore(reducer, initialState);
 
-      store.dispatch({ type: 'FINAL_SCORE' });
+      store.dispatch({ type: 'OUTCOME' });
 
       store.getState().status.should.equal(statuses.WIN);
     });

@@ -1,8 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { statuses } from '../reducers/game';
-import './components.css';
 
 export const Card = ({ color, face, faceDown }) =>
     faceDown
@@ -13,7 +12,12 @@ export const Hand = ({ label, cards }) =>
   <div>
     <label>{ label }</label>
     { cards.map((card, i) =>
-      <Card face={ card.face } faceDown={ card.faceDown } key={ i } />
+      <Card
+          face={ card.face }
+          faceDown={ card.faceDown }
+          color={ card.color }
+          key={ i }
+      />
     )}
   </div>;
 
@@ -33,9 +37,13 @@ export const BlackjackGame = ({
     <button onClick={ deal }>Deal</button>
     <hr />
     { drawPile && drawPile.length === 0 &&
-      [<div>Deck is empty, refresh for a new game.</div>, <hr />] }
+      [<div>Deck is empty, refresh for a new game.</div>,
+       <hr />] }
     <Hand label="Dealer: " cards={ dealerHand } />
-    <div>Dealer Score: { status === statuses.PLAYING ? '?' : dealerScore }</div>
+    <div>Dealer Score: {
+        status === statuses.PLAYING
+            ? '?'
+            : dealerScore }</div>
     <hr />
     <Hand label="Your Hand: " cards={ playerHand } />
     <div>Your Score: { playerScore }</div>
